@@ -19,7 +19,7 @@ public class ExcelHelper {
 
 	public static String tipo = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 	static String[] titulos = { "nombre", "apellido_paterno", "apellido_materno", "sueldo" };
-	static String SHEET = "Empleado";
+	static String hoja = "Empleado";
 	
 	public static boolean FormatoExcel(MultipartFile archivo) {
 		if(!tipo.equals(archivo.getContentType())) {
@@ -32,7 +32,7 @@ public class ExcelHelper {
 		try {
 			Workbook workbook = new XSSFWorkbook(inStream);
 			
-			Sheet sheet = workbook.getSheet(SHEET);
+			Sheet sheet = workbook.getSheet(hoja);
 			Iterator<Row> columnas = sheet.iterator();
 			
 			List<Empleado> empleados = new ArrayList<Empleado>();
@@ -54,11 +54,13 @@ public class ExcelHelper {
 				int celdaIidx = 0;
 				
 				while (celdas.hasNext()) {
+					
 					Cell currentCell = celdas.next();
 					
 					switch (celdaIidx) {
 					
-					case 0: empleado.setId((int) currentCell.getNumericCellValue()); 
+					case 0: 
+						empleado.setId((int) currentCell.getNumericCellValue()); 
 					 	break;
 					 
 					case 1:

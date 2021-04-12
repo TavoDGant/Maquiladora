@@ -51,16 +51,16 @@ public class EmpleadoController {
 	}
 	
 	@PostMapping("empleados/upload")
-	public ResponseEntity<Mensajes> subirEmpleados(@RequestParam("archivo") MultipartFile archivo){
+	public ResponseEntity<Mensajes> subirEmpleados(@RequestParam("file") MultipartFile archivo){
 		String mensaje = "";
 		
 		if(ExcelHelper.FormatoExcel(archivo)) {
 			try {
 				service.guardarExcel(archivo);
-				mensaje = "Archivo subido exitosmente: " + archivo.getOriginalFilename();
+				mensaje = "Archivo subido exitosamente: " + archivo.getOriginalFilename();
 				return ResponseEntity.status(HttpStatus.OK).body(new Mensajes(mensaje));
 			} catch (Exception e) {
-				mensaje = "Error al subir el archivo: " + e.getMessage();
+				mensaje = "Error al subir el archivo: " + archivo.getOriginalFilename()+ " " +e.getMessage();
 				return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new Mensajes(mensaje));
 			}
 		}
