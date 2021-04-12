@@ -22,4 +22,12 @@ public class EmpleadoService {
 	public @ResponseStatus void guardarEmpleados(Empleado empleado) {
 		empleadoRepository.save(empleado);
 	}
+
+	public @ResponseStatus void eliminarEmpleados(Integer id) {
+		empleadoRepository.deleteById(id);
+	}
+
+	public @ResponseStatus void actualizarEmpleados(Empleado empleado) {
+		empleadoRepository.save(empleado);
+	}
 }
