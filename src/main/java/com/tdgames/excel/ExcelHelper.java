@@ -18,7 +18,7 @@ import com.tdgames.entity.Empleado;
 public class ExcelHelper {
 
 	public static String tipo = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-	static String[] titulos = { "nombre", "apellido_paterno", "apellido_materno", "sueldo" };
+	//static String[] titulos = { "nombre", "apellido_paterno", "apellido_materno", "sueldo" };
 	static String hoja = "Empleado";
 	
 	public static boolean FormatoExcel(MultipartFile archivo) {
